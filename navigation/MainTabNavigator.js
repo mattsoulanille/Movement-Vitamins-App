@@ -4,8 +4,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import ScreeningScreen from '../screens/ScreeningScreen';
+import VitaminsScreen from '../screens/VitaminsScreen';
+import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import VitaminInfo from '../screens/VitaminInfo';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -26,11 +29,11 @@ HomeStack.navigationOptions = {
 };
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+  Login: LoginScreen,
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Login',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -43,8 +46,38 @@ const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
 
+
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+    />
+  ),
+};
+
+const ScreeningStack = createStackNavigator({
+  Screening: ScreeningScreen,
+});
+
+ScreeningStack.navigationOptions = {
+  tabBarLabel: "Screening",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+    />
+  ),
+};
+
+const VitaminsStack = createStackNavigator({
+  Vitamins: VitaminsScreen,
+  VitaminInfo: VitaminInfo,
+});
+
+VitaminsStack.navigationOptions = {
+  tabBarLabel: "Vitamin",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -56,5 +89,7 @@ SettingsStack.navigationOptions = {
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
+  ScreeningStack,
+  VitaminsStack,
   SettingsStack,
 });

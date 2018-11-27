@@ -1,4 +1,5 @@
 import React from 'react';
+import { ExpoLinksView } from '@expo/samples';
 import {
   Image,
   Platform,
@@ -7,20 +8,20 @@ import {
   Text,
   TouchableOpacity,
   View,
+  WebView,
 } from 'react-native';
 
-export default class HomeScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: 'Login/Registration',
   };
 
   render() {
     return (
       <View style={styles.container}>
-            <Image
-              source={ require('../assets/images/logo.png')}
-              style={styles.welcomeImage}
-            />
+        <WebView
+        source={{uri: 'https://google.com/'}}
+      />
       </View>
     );
   }
@@ -29,14 +30,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 15,
     backgroundColor: '#fff',
-    justifyContent: 'center',
-    resizeMode: 'stretch'
-  },
-  
-  welcomeImage: {
-    width: 300,
-    height: 300,
-    alignSelf: 'center',
   },
 });
